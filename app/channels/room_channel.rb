@@ -1,3 +1,4 @@
+# WebSocket処理のサーバーサイドを受け持つファイル
 class RoomChannel < ApplicationCable::Channel
   def subscribed
     # stream_from "some_channel"

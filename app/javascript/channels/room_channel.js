@@ -1,3 +1,5 @@
+// WebSocket処理のクライアントサイドを受け持つファイル
+
 import consumer from "./consumer"
 
 consumer.subscriptions.create("RoomChannel", {
