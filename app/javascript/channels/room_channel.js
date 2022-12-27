@@ -5,7 +5,16 @@ import consumer from "./consumer"
 consumer.subscriptions.create("RoomChannel", {
   // 接続時に呼ばれるコールバック
   connected() {
-    // Called when the subscription is ready for use on the server
+    // Enterを押した時にテキストフィールドの値に対して、speakを実行
+    document.
+      querySelector('input[data-behavior="room_speaker"]').
+      addEventListener('keypress', (event) => {
+      if (event.key === 'Enter') {
+        this.speak(event.target.value)
+        event.target.value = ''
+        return event.preventDefault()
+      }
+    })
   },
 
   // 接続解除時に呼ばれるコールバック
@@ -15,11 +24,14 @@ consumer.subscriptions.create("RoomChannel", {
 
   // サーバーからのデータを受信した時に呼ばれるコールバック
   received(data) {
-    // Called when there's incoming data on the websocket for this channel
+    // 受け取ったメッセージをHTML上に追加
+    const element = document.querySelector('#message')
+    element.insertAdjacentHTML('beforeend', data['message'])
   },
 
-  speak: function () {
+  speak: function (message) {
     // Room channelクラスのspeakメソッドをWebSocket経由で呼び出している
-    return this.perform('speak');
+    // サーバーサイドへメッセージを送信
+    return this.perform('speak', { message: message });
   }
 });
