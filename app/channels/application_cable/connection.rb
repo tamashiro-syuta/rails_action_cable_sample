@@ -1,7 +1,7 @@
 module ApplicationCable
   class Connection < ActionCable::Connection::Base
     # current_userメソッドと、current_user=メソッドの2つが作られる
-    identiffied_by :current_user
+    identified_by :current_user
 
     # clientが接続するしたときに呼ばれる
     def connect
