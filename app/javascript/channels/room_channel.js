@@ -25,7 +25,7 @@ consumer.subscriptions.create("RoomChannel", {
   // サーバーからのデータを受信した時に呼ばれるコールバック
   received(data) {
     // 受け取ったメッセージをHTML上に追加
-    const element = document.querySelector('#message')
+    const element = document.querySelector('#messages')
     element.insertAdjacentHTML('beforeend', data['message'])
   },
 
