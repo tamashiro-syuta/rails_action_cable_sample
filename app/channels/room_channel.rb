@@ -25,9 +25,9 @@ class RoomChannel < ApplicationCable::Channel
 
   private
   def render_message(message)
-    puts "hoge"
     # ApplicationController.renderは、外部のテンプレートのレンダリングを行えます
     ApplicationController.render(
+      # view/messages/_message.html.erbをレンダリングしている
       partial: "messages/message",
       locals: { message: message}
     )

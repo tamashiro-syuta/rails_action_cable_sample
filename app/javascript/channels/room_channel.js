@@ -4,6 +4,7 @@ import consumer from "./consumer"
 
 consumer.subscriptions.create("RoomChannel", {
   // 接続時に呼ばれるコールバック
+  // ここでは、接続時にEnterを押したときの関数をセット(準備)している
   connected() {
     // Enterを押した時にテキストフィールドの値に対して、speakを実行
     document.
